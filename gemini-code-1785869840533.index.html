@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Coffee Lab | Barista Academy</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --dark-espresso: #120a07;
+            --deep-roast: #1c100b;
+            --medium-roast: #2d1b12;
+            --accent-gold: #d4af37;
+            --accent-gold-hover: #b89528;
+            --warm-cream: #faf7f2;
+            --light-cream: #f3ebd9;
+            --text-main: #2b2523;
+            --text-muted: #706865;
+            --white: #ffffff;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --font-script: 'Alex Brush', cursive;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--warm-cream);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--dark-espresso);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+            padding: 0.5rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .top-bar-info {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .top-bar-info a, .top-bar-info span {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .top-bar-info a:hover {
+            color: var(--accent-gold);
+        }
+
+        .top-bar-info i {
+            color: var(--accent-gold);
+            margin-right: 6px;
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: var(--deep-roast);
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .brand-logo-icon {
+            width: 44px;
+            height: 44px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+
+        .brand-text h1 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            letter-spacing: 2px;
+            color: var(--white);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .brand-text p {
+            font-size: 0.65rem;
+            letter-spacing: 2.5px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--warm-cream);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-btn {
+            background-color: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold) !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 4px;
+            transition: all 0.3s !important;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent-gold);
+            color: var(--dark-espresso) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(18, 10, 7, 0.82), rgba(28, 16, 11, 0.88)), 
+                        url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: var(--white);
+            padding: 7rem 8% 6rem;
+            display: flex;
+            align-items: center;
+            min-height: 85vh;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-tag {
+            font-size: 0.85rem;
+            letter-spacing: 4px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-family: var(--font-heading);
+            font-size: 3.8rem;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .hero-script {
+            font-family: var(--font-script);
+            font-size: 3.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            line-height: 1;
+        }
+
+        .hero-time-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.4rem 1.2rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-pillars {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 2.5rem;
+        }
+
+        .pillar-tag {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--dark-espresso);
+            padding: 1rem 2.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s;
+        }
+
+        .btn-secondary:hover {
+            color: var(--accent-gold);
+        }
+
+        /* Hero Card Badge */
+        .hero-badge-card {
+            background: rgba(28, 16, 11, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .badge-number {
+            font-family: var(--font-heading);
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-label {
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-sub {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* Value Props Section */
+        .values-bar {
+            background-color: var(--deep-roast);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem 8%;
+        }
+
+        .values-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--white);
+        }
+
+        .value-item i {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+        }
+
+        .value-item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .value-item p {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Curriculum Section */
+        .curriculum {
+            padding: 7rem 8%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--deep-roast);
+            font-weight: 700;
+        }
+
+        .divider {
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            margin: 1.2rem auto 0;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background-color: var(--medium-roast);
+            transition: background-color 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+        }
+
+        .course-card:hover::before {
+            background-color: var(--accent-gold);
+        }
+
+        .card-header-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--warm-cream);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            color: var(--medium-roast);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .course-card:hover .card-header-icon {
+            background-color: var(--deep-roast);
+            color: var(--accent-gold);
+        }
+
+        .course-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.35rem;
+            color: var(--deep-roast);
+            margin-bottom: 0.8rem;
+        }
+
+        .course-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Quote Banner */
+        .quote-banner {
+            background: linear-gradient(rgba(18, 10, 7, 0.9), rgba(18, 10, 7, 0.9)), 
+                        url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1920&q=80') fixed center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 8%;
+        }
+
+        .quote-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote-banner h2 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-banner .script-text {
+            font-family: var(--font-script);
+            color: var(--accent-gold);
+            font-size: 4rem;
+            line-height: 1;
+        }
+
+        /* Footer & Contact Section */
+        footer {
+            background-color: var(--dark-espresso);
+            color: var(--white);
+            padding: 6rem 8% 2rem;
+        }
+
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent-gold);
+        }
+
+        .footer-col p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            transition: color 0.3s;
+        }
+
+        .contact-link i {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+        }
+
+        .contact-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 1.2rem;
+            transition: color 0.3s;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.6rem 1rem;
+            border-radius: 6px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            width: fit-content;
+        }
+
+        .social-link i {
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+        }
+
+        .social-link:hover {
+            color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .location-details p {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 0.8rem;
+        }
+
+        .location-details i {
+            color: var(--accent-gold);
+            margin-top: 4px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .hero-badge-card {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-bar { display: none; }
+            header { padding: 1rem 5%; }
+            nav { display: none; }
+            .hero { padding: 4rem 5%; text-align: center; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-script { font-size: 2.5rem; }
+            .hero-pillars { justify-content: center; flex-wrap: wrap; }
+            .cta-group { justify-content: center; flex-direction: column; }
+            .curriculum { padding: 4rem 5%; }
+            .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Informational Bar -->
+    <div class="top-bar">
+        <div class="top-bar-info">
+            <span><i class="fa-solid fa-location-dot"></i> Karanagar, Apolo Building</span>
+            <span><i class="fa-solid fa-phone"></i> +91 7006575353</span>
+            <span><i class="fa-regular fa-clock"></i> Batch Timing: 11:00 AM - 2:00 PM</span>
+            <a href="https://instagram.com/thecoffeelab.sgr" target="_blank">
+                <i class="fa-brands fa-instagram"></i> @thecoffeelab.sgr
+            </a>
+        </div>
+        <div>
+            <span><i class="fa-solid fa-award"></i> Certified Professional Barista Training</span>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header>
+        <a href="#" class="brand-logo">
+            <div class="brand-logo-icon">
+                <i class="fa-solid fa-mug-hot"></i>
+            </div>
+            <div class="brand-text">
+                <h1>THE COFFEE LAB</h1>
+                <p>Barista Academy</p>
+            </div>
+        </a>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#curriculum">Curriculum</a>
+            <a href="#location">Location</a>
+            <a href="https://instagram.com/thecoffeelab.sgr" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="tel:7006575353" class="nav-btn">Enroll Now</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-tag">Professional Coffee Education</span>
+                <h1 class="hero-title">BARISTA ACADEMY</h1>
+                <div class="hero-script">Turn Your Passion into a Profession</div>
+                
+                <div class="hero-time-badge">
+                    <i class="fa-regular fa-clock"></i> Class Timing: 11:00 AM – 2:00 PM
+                </div>
+
+                <div class="hero-pillars">
+                    <span class="pillar-tag">Learn</span>
+                    <span class="pillar-tag">Practice</span>
+                    <span class="pillar-tag">Perfect</span>
+                    <span class="pillar-tag">Serve</span>
+                </div>
+
+                <div class="cta-group">
+                    <a href="tel:7006575353" class="btn-primary">
+                        <i class="fa-solid fa-graduation-cap"></i> Enroll Today
+                    </a>
+                    <a href="#curriculum" class="btn-secondary">
+                        View Course Modules <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Hero Badge Component -->
+            <div class="hero-badge-card">
+                <div class="badge-number">100%</div>
+                <div class="badge-label">Practical Training</div>
+                <p class="badge-sub">Hands-on experience with industry-standard commercial equipment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Highlights -->
+    <div class="values-bar">
+        <div class="values-wrapper">
+            <div class="value-item">
+                <i class="fa-solid fa-certificate"></i>
+                <div>
+                    <h4>Industry Certification</h4>
+                    <p>Recognized professional skill training</p>
+                </div>
+            </div>
+            <div class="value-item">
+                <i class="fa-solid fa-sliders"></i>
+                <div>
+                    <h4>Pro Machinery</h4>
+                    <p>Train on commercial espresso machines</p>
+                </div>
+            </div>
+            <div class="value-item">
+                <i class="fa-solid fa-user-tie"></i>
+                <div>
+                    <h4>Career Placement</h4>
+                    <p>Guidance and job support</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum" id="curriculum">
+        <div class="section-header">
+            <span class="section-subtitle">Comprehensive Training</span>
+            <h2 class="section-title">What You Will Learn</h2>
+            <div class="divider"></div>
+        </div>
+
+        <div class="cards-grid">
+            <div class="course-card">
+                <div class="card-header-icon">
+                    <i class="fa-solid fa-filter"></i>
+                </div>
+                <h3>Espresso & Brewing</h3>
+                <p>Master extraction science, grind calibration, pressure profiling, and precision espresso shot pulling.</p>
+            </div>
+
+            <div class="course-card">
+                <div class="card-header-icon">
+                    <i class="fa-solid fa-fill-drip"></i>
+                </div>
+                <h3>Latte Art Mastery</h3>
+                <p>Develop micro-foam texturing techniques and pour intricate patterns including hearts, rosettas, and tulips.</p>
+            </div>
+
+            <div class="course-card">
+                <div class="card-header-icon">
+                    <i class="fa-solid fa-seedling"></i>
+                </div>
+                <h3>Coffee Knowledge</h3>
+                <p>Understand bean origin characteristics, processing methods, roasting profiles, and professional cupping protocols.</p>
+            </div>
+
+            <div class="course-card">
+                <div class="card-header-icon">
+                    <i class="fa-solid fa-gears"></i>
+                </div>
+                <h3>Professional Operations</h3>
+                <p>Learn machine maintenance, bar workflow optimization, and high-volume commercial café standards.</p>
+            </div>
+
+            <div class="course-card">
+                <div class="card-header-icon">
+                    <i class="fa-solid fa-briefcase"></i>
+                </div>
+                <h3>Career Support</h3>
+                <p>Receive dedicated career guidance, resume building, interview preparation, and job placement assistance.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Banner -->
+    <section class="quote-banner">
+        <div class="quote-content">
+            <h2>GOOD COFFEE STARTS WITH</h2>
+            <div class="script-text">Great Skills</div>
+        </div>
+    </section>
+
+    <!-- Footer & Location Section -->
+    <footer id="location">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>THE COFFEE LAB</h4>
+                <p>Empowering aspiring baristas with world-class practical skills and professional industry training.</p>
+                <p><em>"Crafting Skills, Brewing Futures."</em></p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact & Socials</h4>
+                <p>Speak directly with our admissions team or follow our journey on Instagram:</p>
+                <a href="tel:7006575353" class="contact-link">
+                    <i class="fa-solid fa-phone-volume"></i> 7006575353
+                </a>
+                <a href="https://instagram.com/thecoffeelab.sgr" target="_blank" class="social-link">
+                    <i class="fa-brands fa-instagram"></i> @thecoffeelab.sgr
+                </a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Academy Details</h4>
+                <div class="location-details">
+                    <p><i class="fa-solid fa-location-dot"></i> <span><strong>Apolo Building</strong><br>Karanagar</span></p>
+                    <p><i class="fa-regular fa-clock"></i> <span><strong>Batch Timing:</strong><br>11:00 AM – 2:00 PM</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Coffee Lab Barista Academy. All rights reserved.</p>
+            <p>Brew Your Future With Us</p>
+        </div>
+    </footer>
+
+</body>
+</html>
